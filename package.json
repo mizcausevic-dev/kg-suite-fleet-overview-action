@@ -1,0 +1,44 @@
+{
+  "name": "kg-suite-fleet-overview-action",
+  "version": "0.1.0",
+  "description": "GitHub Action that walks a mixed-protocol directory of Kinetic Gain Suite JSON documents, routes each via kg-protocol-detect, groups by (protocol, spec_version), and posts a unified one-page composition overview as a PR comment. Optionally fail the run when core protocols are missing from the fleet or unrouted documents exceed a threshold. Cross-protocol composition action — companion to spec-version-tracker / conformance-runner / canonicalize.",
+  "type": "module",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "author": "mizcausevic-dev",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mizcausevic-dev/kg-suite-fleet-overview-action"
+  },
+  "keywords": [
+    "github-action",
+    "actions",
+    "kinetic-gain-suite",
+    "protocol-detect",
+    "fleet-overview",
+    "composition",
+    "governance",
+    "ai-governance",
+    "typescript"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/node": "^22.10.0",
+    "@vitest/coverage-v8": "^2.1.8",
+    "eslint": "^9.17.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.0",
+    "vitest": "^2.1.8"
+  }
+}

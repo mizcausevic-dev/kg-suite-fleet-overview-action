@@ -1,0 +1,44 @@
+name: "Kinetic Gain Suite Fleet Overview"
+description: "Walk a mixed-protocol directory of Kinetic Gain Suite JSON documents, route each via kg-protocol-detect, group by (protocol, spec_version), and post a unified one-page composition overview as a PR comment. Optionally fail the run when core protocols are missing or unrouted files exceed a threshold."
+author: "mizcausevic-dev"
+branding:
+  icon: "compass"
+  color: "purple"
+
+inputs:
+  dir:
+    description: "Directory containing *.json Kinetic Gain Suite documents (mixed protocols supported)."
+    required: true
+  comment-on-pr:
+    description: "Post the Markdown overview as a PR comment. 'auto' (default) posts only on pull_request events."
+    required: false
+    default: "auto"
+  fail-on-missing-protocol:
+    description: "Fail the run when any of the 4 core Suite protocols (AgentCard / Tool Card / Prompt Provenance / Evidence Bundle) is missing from the fleet."
+    required: false
+    default: "false"
+  fail-on-unrouted:
+    description: "Fail the run when any JSON file did not match a known Suite protocol."
+    required: false
+    default: "false"
+  max-unrouted:
+    description: "Maximum allowed unrouted documents before failing the run. Takes precedence over fail-on-unrouted when set."
+    required: false
+  github-token:
+    description: "Token used to post the PR comment (defaults to GITHUB_TOKEN)."
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  total-files:
+    description: "Number of JSON files analyzed."
+  protocols-detected:
+    description: "Number of distinct Suite protocols detected in the fleet."
+  missing-protocols:
+    description: "Number of core protocols missing from the fleet."
+  unrouted-files:
+    description: "Number of files that did not match any known Suite protocol."
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
