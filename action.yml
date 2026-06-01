@@ -1,5 +1,5 @@
 name: "Kinetic Gain Suite Fleet Overview"
-description: "Walk a mixed-protocol directory of Kinetic Gain Suite JSON documents, route each via kg-protocol-detect, group by (protocol, spec_version), and post a unified one-page composition overview as a PR comment. Optionally fail the run when core protocols are missing or unrouted files exceed a threshold."
+description: "One-page composition overview across all 5 Kinetic Gain Suite protocols, posted as a PR comment."
 author: "mizcausevic-dev"
 branding:
   icon: "compass"
